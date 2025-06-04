@@ -1,13 +1,24 @@
+// Styles for root should be inside index.scss file
 #root {
   height: 100%;
   min-height: 850px;  
   background: linear-gradient(0deg, #1CB5E0 20%, #050b45 100%) no-repeat;
 }
+/*
+Root is usually used to set global variables. Need to split and move :root styles inside index.scss file
+ :root {
+  ...
+ }
+ .App {
+  ....
+ }
+*/
 
 :root, 
 .App {
   text-align: center;
 
+  // @keyframes block should be outside all selectors, ideally at the top or bottom of SCSS file.
   @keyframes anvil {
     0% {
       box-shadow: 0 0 0 rgba(241, 241, 241, 0);
@@ -28,6 +39,8 @@
   .popup-content {
     width: auto;
     max-width: 95%;
+    // anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards - can be moved out as a global variable and reused here
+    // transition requires a CSS property (like opacity, transform, etc.), not a keyframe name.
     -moz-transition: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
     -ms-transition: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
     -o-transition: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
