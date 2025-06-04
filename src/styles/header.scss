@@ -1,3 +1,12 @@
+//Extract variables
+//$header-bg: rgba(0, 8, 81, 0.8);
+//$text-light: #fff;
+//$brand-red: #e50914;
+//etc.
+
+// Hard to maintain and understand magic values. better to use rem multiples of 0.25 (0.25rem, 0.5rem, 1rem, etc.)
+
+
 header {
     position: fixed;
     z-index: 999;
@@ -10,8 +19,10 @@ header {
     border-radius: 0;
 
     .input-group {
+      // Float is an outdated layout technique. Use flex instead.
       float: right;
       width: 200px;
+      // It is better to work with heading paddings rather than assigning margins to each element
       margin: 0.7rem 0 0;
 
       @media (max-width: 720px) {
@@ -35,7 +46,9 @@ header {
 
     nav {
       position: relative;
+      // Float is an outdated layout technique. Use flex instead.
       float: right;
+      // It is better to work with heading paddings rather than assigning margins to each element
       margin: 0.5rem 1rem 0;
 
       a {
@@ -76,19 +89,23 @@ header {
       }     
       
       &.bi-film {
+        // Float is an outdated layout technique. Use flex instead.
         float: left;
+        // It is better to work with heading paddings rather than assigning margins to each element
         margin-left: 1.5rem;
         font-size: 1.3rem;
         color: #e9ecef;
       }
 
       &.bi-search {
-
+        // Empty. Remove or fill
       }
 
+      //.bi-heart-fill - unused
       &.bi-star-fill,
       &.bi-heart-fill{
         color: #e50914;
+        // This animation declaration is incomplete. it doesn’t specify: timing-function, iteration-count and etc.
         animation: blink .4s;
 
         &.bi-star-fill-white,
@@ -97,6 +114,8 @@ header {
         }
       }
 
+      //- @keyframes block should be outside all selectors, ideally at the top or bottom of SCSS file.
+      //- Incorrect animation. Ideally, at least 0% and 100% states should be defined.
       @keyframes blink{
         50% {
           color: red;
@@ -104,6 +123,7 @@ header {
       }  
     }
 
+    // Unused
     .selected {
       i {
         color: #fff;
