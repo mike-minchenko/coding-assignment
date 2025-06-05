@@ -27,3 +27,10 @@
 7. I would recommend changing the logo and favicon icons to match the app.
 
 <img alt="image" src="./assets/image_7.png" width="350" />
+
+
+## Some basic recommendations for refactoring
+1.	**Add a Linter and Formatter**
+Introduce ESLint (with recommended React rules) and Prettier to enforce consistent code style and catch potential issues early.
+2.	**Use TypeScript**
+Migrate the codebase to TypeScript. 
