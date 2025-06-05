@@ -16,7 +16,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "pretiffy": "prettier . --write",
+    "pretiffy": "prettier \"src/**/*.{ts,tsx}\" --write",
     "preview": "vite preview"
   },
   "devDependencies": {
