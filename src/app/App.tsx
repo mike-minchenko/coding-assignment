@@ -1,11 +1,5 @@
 import { useEffect, useState } from "react"
-import {
-  Routes,
-  Route,
-  createSearchParams,
-  useSearchParams,
-  useNavigate,
-} from "react-router"
+import { createSearchParams, useSearchParams, useNavigate } from "react-router"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchMovies } from "store/moviesSlice"
 import {
@@ -14,8 +8,8 @@ import {
   ENDPOINT,
   API_KEY,
 } from "shared/constants"
-import { WatchLater, Movies, Starred } from "pages"
 import { YouTubePlayer, Header } from "components"
+import { RouterView } from "../routes"
 import "./App.scss"
 
 const App = () => {
@@ -96,30 +90,7 @@ const App = () => {
           </div>
         )}
 
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Movies
-                movies={movies}
-                viewTrailer={viewTrailer}
-                closeCard={closeCard}
-              />
-            }
-          />
-          <Route
-            path="/starred"
-            element={<Starred viewTrailer={viewTrailer} />}
-          />
-          <Route
-            path="/watch-later"
-            element={<WatchLater viewTrailer={viewTrailer} />}
-          />
-          <Route
-            path="*"
-            element={<h1 className="not-found">Page Not Found</h1>}
-          />
-        </Routes>
+        <RouterView />
       </div>
     </div>
   )
