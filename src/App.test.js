@@ -8,6 +8,7 @@ import App from './App'
 - Move all renderWithProviders(<App />) into the 'beforeEach' block
 - const user = userEvent.setup() also can be moved. One userEvent usage option must be selected. (userEvent.setup() or just userEvent)
 - Better to use test-id instead of text search
+- Better to mock fetch requests
 */
 
 it('renders watch later link', () => {
@@ -20,12 +21,11 @@ it('search for movies', async () => {
   renderWithProviders(<App />)
   await userEvent.type(screen.getByTestId('search-movies'), 'forrest gump')
   await waitFor(() => {
-    // Better to use findByText instead of waitFor to have access to the element to find 'View Trailer' button inside this element.
+    // Better to use 'findByText' instead of 'waitFor' to have access to the element to find 'View Trailer' button inside this element.
     // Now the logic is incorrect.
     expect(screen.getAllByText('Through the Eyes of Forrest Gump')[0]).toBeInTheDocument()
   })
   const viewTrailerBtn = screen.getAllByText('View Trailer')[0]
-  console.log(screen.getByTestId('search-movies'))
   await userEvent.click(viewTrailerBtn)
   await waitFor(() => {
     expect(screen.getByTestId('youtube-player')).toBeInTheDocument()
@@ -45,7 +45,7 @@ it('renders starred component', async() => {
   const user = userEvent.setup()
   await user.click(screen.getByTestId('nav-starred'))
   expect(screen.getByText(/There are no starred movies/i)).toBeInTheDocument()
-  // waitFor unnecessary
+  // 'waitFor' unnecessary
   await waitFor(() => {
     expect(screen.getByTestId('starred')).toBeInTheDocument()
   })  

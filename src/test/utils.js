@@ -12,6 +12,7 @@ export function renderWithProviders(
   ui,
   {
     preloadedState = {},
+    // Store creation should be moved outside or use factory function
     store = configureStore({
       reducer: { 
         movies: moviesSlice.reducer, 

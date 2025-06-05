@@ -3,6 +3,10 @@ import userEvent from '@testing-library/user-event'
 import { renderWithProviders } from './utils'
 import App from '../App'
 
+// - It is better to start all tests with the "describe" block.
+// - Separate tests into small pieces ("it" blocks)
+// - Better to mock fetch requests
+
 it('movies starred and saved to watch later', async () => {
     renderWithProviders(<App />)
 

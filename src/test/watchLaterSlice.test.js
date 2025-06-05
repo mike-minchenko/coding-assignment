@@ -1,6 +1,8 @@
 import watchLaterSlice from '../data/watchLaterSlice'
 import { moviesMock } from './movies.mocks'
 
+// Similar to "starredSlice.test.js". All possible improvements and potential problems are described there.
+
 describe('watchLaterSlice test', () => {
 
     const state = { watchLaterMovies: [] }
