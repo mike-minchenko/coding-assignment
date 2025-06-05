@@ -1,5 +1,5 @@
-import moviesSlice, { fetchMovies } from "../data/moviesSlice"
-import { moviesMock } from "./movies.mocks"
+import moviesSlice, { fetchMovies } from "../moviesSlice.ts"
+import { moviesMock } from "./mocks/movies.mocks.ts"
 
 describe("MovieSlice test", () => {
   it("should set loading true while action is pending", () => {

@@ -7,20 +7,16 @@ import {
   useNavigate,
 } from "react-router"
 import { useDispatch, useSelector } from "react-redux"
-import "reactjs-popup/dist/index.css"
-import { fetchMovies } from "./data/moviesSlice"
+import { fetchMovies } from "store/moviesSlice"
 import {
   ENDPOINT_SEARCH,
   ENDPOINT_DISCOVER,
   ENDPOINT,
   API_KEY,
-} from "./constants"
-import Header from "./components/Header"
-import Movies from "./components/Movies"
-import Starred from "./components/Starred"
-import WatchLater from "./components/WatchLater"
-import YouTubePlayer from "./components/YoutubePlayer"
-import "./app.scss"
+} from "shared/constants"
+import { WatchLater, Movies, Starred } from "pages"
+import { YouTubePlayer, Header } from "components"
+import "./App.scss"
 
 const App = () => {
   const state = useSelector(state => state)

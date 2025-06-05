@@ -1,12 +1,13 @@
 import ReactDOM from "react-dom/client"
 import { Provider } from "react-redux"
 import { BrowserRouter } from "react-router"
-import store from "./data/store"
-import "./index.scss"
-import App from "./App"
 import { StrictMode } from "react"
+import store from "store/store"
+import App from "app/App"
+import "./index.scss"
 
 const root = ReactDOM.createRoot(document.getElementById("root")!)
+
 root.render(
   <StrictMode>
     <Provider store={store}>

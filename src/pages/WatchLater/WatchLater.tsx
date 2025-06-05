@@ -1,9 +1,9 @@
-import { useSelector, useDispatch } from "react-redux"
-
-import watchLaterSlice from "../data/watchLaterSlice"
-import Movie from "./Movie"
-import "../styles/starred.scss"
 import { Link } from "react-router"
+import { useSelector, useDispatch } from "react-redux"
+import watchLaterSlice from "store/watchLaterSlice"
+
+import Movie from "../Movies/Movie"
+import "../Starred/starred.scss"
 
 const WatchLater = ({ viewTrailer }) => {
   const state = useSelector(state => state)

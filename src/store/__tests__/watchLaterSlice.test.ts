@@ -1,5 +1,5 @@
-import watchLaterSlice from "../data/watchLaterSlice"
-import { moviesMock } from "./movies.mocks"
+import watchLaterSlice from "../watchLaterSlice.ts"
+import { moviesMock } from "./mocks/movies.mocks.ts"
 
 describe("watchLaterSlice test", () => {
   const state = { watchLaterMovies: [] }

@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router"
 import { useSelector } from "react-redux"
 
-import "../styles/header.scss"
+import "./Header.scss"
 
 const Header = ({ searchMovies }) => {
   const { starredMovies } = useSelector(state => state.starred)
