@@ -1,3 +1,7 @@
+// This component is nearly identical to "Starred.jsx".
+// Consider extracting a reusable component
+
+// All other potential problems are described in "Starred.jsx"
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import watchLaterSlice from '../data/watchLaterSlice'
@@ -8,6 +12,7 @@ const WatchLater = ({viewTrailer}) => {
 
     const state = useSelector((state) => state)
     const { watchLater } = state
+    // Typo in action name: `remveAllWatchLater`
     const { remveAllWatchLater } = watchLaterSlice.actions
     const dispatch = useDispatch()
 
