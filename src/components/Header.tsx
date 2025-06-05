@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom"
+import { Link, NavLink } from "react-router"
 import { useSelector } from 'react-redux'
 
 import '../styles/header.scss'

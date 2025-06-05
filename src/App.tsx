@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Routes, Route, createSearchParams, useSearchParams, useNavigate } from "react-router-dom"
+import { Routes, Route, createSearchParams, useSearchParams, useNavigate } from "react-router"
 import { useDispatch, useSelector } from 'react-redux'
 import 'reactjs-popup/dist/index.css'
 import { fetchMovies } from './data/moviesSlice'

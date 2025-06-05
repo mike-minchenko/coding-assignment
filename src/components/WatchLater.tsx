@@ -1,8 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
+
 import watchLaterSlice from '../data/watchLaterSlice'
 import Movie from './Movie'
 import '../styles/starred.scss'
+import { Link } from "react-router";
 
 const WatchLater = ({viewTrailer}) => {
 

@@ -1,12 +1,13 @@
-import React from 'react';
+
 import { render } from '@testing-library/react';
 import { Provider } from 'react-redux'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter } from 'react-router'
 import { configureStore } from '@reduxjs/toolkit'
-import { setupListeners } from '@reduxjs/toolkit/dist/query'
+
 import moviesSlice from '../data/moviesSlice'
 import starredSlice from '../data/starredSlice'
 import watchLaterSlice from '../data/watchLaterSlice'
+import { setupListeners } from "@reduxjs/toolkit/query";
 
 export function renderWithProviders(
   ui,
