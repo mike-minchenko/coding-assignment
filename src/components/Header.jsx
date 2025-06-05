@@ -37,7 +37,7 @@ const Header = ({ searchMovies }) => {
             <i className="bi bi-star" />
           )}
         </NavLink>
-        {/*aria-label="Watch later"*/}
+
         <NavLink to="/watch-later" className="nav-fav">
           {/*Text should start with a capital letter.*/}
           watch later

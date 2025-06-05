@@ -1,3 +1,8 @@
+// - Duplicating media. Put it in a separate block
+// - I see a lot of places where there is a mix of percentages, pixels and rems.
+//
+// My advice is to reconsider the approach to writing styles for this component and simplify it.
+
 .container {
     padding-top: 100px;
     color: #fff;
@@ -56,6 +61,7 @@
             height: 85px;
             padding: 5px;
             margin-bottom: 5px;
+            // better to use overflow: auto;
             overflow: scroll;
             font-size: 0.7rem;
             line-height: 105%;
