@@ -6,7 +6,7 @@ import { starredSlice } from "../../store/reducers/starredSlice"
 import Movie from "../Movies/Movie"
 import "./Starred.scss"
 
-const Starred = ({ viewTrailer }) => {
+const Starred = () => {
   const starredMovies = useAppSelector(state => state.starred.starredMovies)
   const { clearAllStarred } = starredSlice.actions
   const dispatch = useDispatch()
@@ -18,7 +18,7 @@ const Starred = ({ viewTrailer }) => {
           <h6 className="header">Starred movies</h6>
           <div className="row">
             {starredMovies.map(movie => (
-              <Movie movie={movie} key={movie.id} viewTrailer={viewTrailer} />
+              <Movie movie={movie} key={movie.id} />
             ))}
           </div>
 

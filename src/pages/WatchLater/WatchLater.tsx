@@ -6,7 +6,7 @@ import { watchLaterSlice } from "../../store/reducers/watchLaterSlice"
 import Movie from "../Movies/Movie"
 import "../Starred/starred.scss"
 
-const WatchLater = ({ viewTrailer }) => {
+const WatchLater = () => {
   const watchLaterMovies = useAppSelector(
     state => state.watchLater.watchLaterMovies,
   )
@@ -20,7 +20,7 @@ const WatchLater = ({ viewTrailer }) => {
           <h6 className="header">Watch Later List</h6>
           <div className="row">
             {watchLaterMovies.map(movie => (
-              <Movie movie={movie} key={movie.id} viewTrailer={viewTrailer} />
+              <Movie movie={movie} key={movie.id} />
             ))}
           </div>
 

@@ -1,43 +1,28 @@
-import { useDispatch, useSelector } from "react-redux"
-import { API_KEY, ENDPOINT } from "../../shared/constants"
-import { useAppSelector } from "../../store/hooks"
-import { starredSlice } from "../../store/reducers/starredSlice"
+import { useViewTrailer } from "../../hooks/useViewTrailer"
 
-import { trailerSlice } from "../../store/reducers/trailerSlice"
+import { useAppDispatch, useAppSelector } from "../../store/hooks"
+import { starredSlice } from "../../store/reducers/starredSlice"
 
 import placeholder from "assets/not-found-500X750.jpeg"
 import { watchLaterSlice } from "../../store/reducers/watchLaterSlice"
 
-const Movie = ({ movie, closeCard }) => {
+const Movie = ({ movie }) => {
   const starredMovies = useAppSelector(state => state.starred.starredMovies)
   const watchLaterMovies = useAppSelector(
     state => state.watchLater.watchLaterMovies,
   )
-  const { openTrailerModal } = trailerSlice.actions
+  const { viewTrailer } = useViewTrailer()
+
   const { starMovie, unstarMovie } = starredSlice.actions
   const { addToWatchLater, removeFromWatchLater } = watchLaterSlice.actions
 
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   const myClickHandler = e => {
     if (!e) var e = window.event
     e.cancelBubble = true
     if (e.stopPropagation) e.stopPropagation()
     e.target.parentElement.parentElement.classList.remove("opened")
-  }
-
-  const viewMovie = async (movie: any) => {
-    const URL = `${ENDPOINT}/movie/${movie.id}/videos?api_key=${API_KEY}`
-    const response = await fetch(URL)
-    const data = await response.json()
-
-    if (data.results.length) {
-      const trailer = data.results.find(vid => vid.type === "Trailer")
-      const trailerKey = trailer ? trailer.key : data.results[0].key
-      dispatch(openTrailerModal(trailerKey))
-    } else {
-      dispatch(openTrailerModal(null))
-    }
   }
 
   return (
@@ -110,7 +95,7 @@ const Movie = ({ movie, closeCard }) => {
             <button
               type="button"
               className="btn btn-dark"
-              onClick={() => viewMovie(movie)}
+              onClick={() => viewTrailer(movie.id)}
             >
               View Trailer
             </button>
