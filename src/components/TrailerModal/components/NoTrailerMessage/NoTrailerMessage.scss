@@ -1,0 +1,10 @@
+.no-trailer-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+
+  &__text {
+    margin: 0;
+  }
+}

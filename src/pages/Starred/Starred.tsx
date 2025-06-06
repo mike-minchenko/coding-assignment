@@ -1,6 +1,6 @@
 import { Link } from "react-router"
 import { useSelector, useDispatch } from "react-redux"
-import starredSlice from "store/starredSlice"
+import starredSlice from "../../store/reducers/starredSlice"
 
 import Movie from "../Movies/Movie"
 import "./Starred.scss"

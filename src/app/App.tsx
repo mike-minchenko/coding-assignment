@@ -1,30 +1,17 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { createSearchParams, useSearchParams, useNavigate } from "react-router"
-import { useDispatch, useSelector } from "react-redux"
-import { fetchMovies } from "store/moviesSlice"
-import {
-  ENDPOINT_SEARCH,
-  ENDPOINT_DISCOVER,
-  ENDPOINT,
-  API_KEY,
-} from "shared/constants"
-import { YouTubePlayer, Header } from "components"
+import { useDispatch } from "react-redux"
+import { fetchMovies } from "../store/reducers/moviesSlice"
+import { ENDPOINT_SEARCH, ENDPOINT_DISCOVER } from "shared/constants"
+import { Header, TrailerModal } from "components"
 import { RouterView } from "../routes"
 import "./App.scss"
 
 const App = () => {
-  const state = useSelector(state => state)
-  const { movies } = state
   const dispatch = useDispatch()
   const [searchParams, setSearchParams] = useSearchParams()
   const searchQuery = searchParams.get("search")
-  const [videoKey, setVideoKey] = useState()
-  const [isOpen, setOpen] = useState(false)
   const navigate = useNavigate()
-
-  const closeModal = () => setOpen(false)
-
-  const closeCard = () => {}
 
   const getSearchResults = query => {
     if (query !== "") {
@@ -45,27 +32,7 @@ const App = () => {
     if (searchQuery) {
       dispatch(fetchMovies(`${ENDPOINT_SEARCH}&query=` + searchQuery))
     } else {
-      dispatch(fetchMovies(ENDPOINT_DISCOVER))
-    }
-  }
-
-  const viewTrailer = movie => {
-    getMovie(movie.id)
-    if (!videoKey) setOpen(true)
-    setOpen(true)
-  }
-
-  const getMovie = async id => {
-    const URL = `${ENDPOINT}/movie/${id}?api_key=${API_KEY}&append_to_response=videos`
-
-    setVideoKey(null)
-    const videoData = await fetch(URL).then(response => response.json())
-
-    if (videoData.videos && videoData.videos.results.length) {
-      const trailer = videoData.videos.results.find(
-        vid => vid.type === "Trailer",
-      )
-      setVideoKey(trailer ? trailer.key : videoData.videos.results[0].key)
+      dispatch(fetchMovies(ENDPOINT_DISCOVER + "&append_to_response=videos"))
     }
   }
 
@@ -75,23 +42,13 @@ const App = () => {
 
   return (
     <div className="App">
-      <Header
-        searchMovies={searchMovies}
-        searchParams={searchParams}
-        setSearchParams={setSearchParams}
-      />
-
-      <div className="container">
-        {videoKey ? (
-          <YouTubePlayer videoKey={videoKey} />
-        ) : (
-          <div style={{ padding: "30px" }}>
-            <h6>no trailer available. Try another movie</h6>
-          </div>
-        )}
-
-        <RouterView />
-      </div>
+      {/*<Header*/}
+      {/*  searchMovies={searchMovies}*/}
+      {/*  searchParams={searchParams}*/}
+      {/*  setSearchParams={setSearchParams}*/}
+      {/*/>*/}
+      <RouterView />
+      <TrailerModal />
     </div>
   )
 }

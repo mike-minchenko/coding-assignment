@@ -5,10 +5,10 @@ export const fetchMovies = createAsyncThunk("fetch-movies", async apiUrl => {
   return response.json()
 })
 
-const moviesSlice = createSlice({
+export const moviesSlice = createSlice({
   name: "movies",
   initialState: {
-    movies: [],
+    movies: null,
     fetchStatus: "",
   },
   reducers: {},
@@ -27,4 +27,4 @@ const moviesSlice = createSlice({
   },
 })
 
-export default moviesSlice
+export default moviesSlice.reducer

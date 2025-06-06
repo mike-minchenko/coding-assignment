@@ -1,14 +1,22 @@
-import { configureStore } from "@reduxjs/toolkit"
-import moviesSlice from "./moviesSlice"
-import starredSlice from "./starredSlice"
-import watchLaterSlice from "./watchLaterSlice"
+import { combineReducers, configureStore } from "@reduxjs/toolkit"
+import moviesReducer from "./reducers/moviesSlice"
+import starredReducer from "./reducers/starredSlice"
+import trailerReducer from "./reducers/trailerSlice"
+import watchLaterReducer from "./reducers/watchLaterSlice"
 
-const store = configureStore({
-  reducer: {
-    movies: moviesSlice.reducer,
-    starred: starredSlice.reducer,
-    watchLater: watchLaterSlice.reducer,
-  },
+const rootReducer = combineReducers({
+  movies: moviesReducer,
+  starred: starredReducer,
+  watchLater: watchLaterReducer,
+  trailer: trailerReducer,
 })
 
-export default store
+export const setupStore = () => {
+  return configureStore({
+    reducer: rootReducer,
+  })
+}
+
+export type RootState = ReturnType<typeof rootReducer>
+export type AppStore = ReturnType<typeof setupStore>
+export type AppDispatch = AppStore["dispatch"]

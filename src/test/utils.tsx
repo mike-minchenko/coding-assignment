@@ -4,9 +4,9 @@ import { render } from "@testing-library/react"
 import { configureStore } from "@reduxjs/toolkit"
 import { setupListeners } from "@reduxjs/toolkit/query"
 
-import moviesSlice from "../store/moviesSlice.ts"
-import starredSlice from "../store/starredSlice"
-import watchLaterSlice from "../store/watchLaterSlice"
+import moviesSlice from "../store/reducers/moviesSlice.ts"
+import starredSlice from "../store/reducers/starredSlice"
+import watchLaterSlice from "../store/reducers/watchLaterSlice"
 
 export function renderWithProviders(
   ui,

@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-const watchLaterSlice = createSlice({
+export const watchLaterSlice = createSlice({
   name: "watch-later",
   initialState: {
     watchLaterMovies: [],
@@ -21,4 +21,4 @@ const watchLaterSlice = createSlice({
   },
 })
 
-export default watchLaterSlice
+export default watchLaterSlice.reducer

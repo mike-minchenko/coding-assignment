@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-const starredSlice = createSlice({
+export const starredSlice = createSlice({
   name: "starred",
   initialState: {
     starredMovies: [],
@@ -21,4 +21,4 @@ const starredSlice = createSlice({
   },
 })
 
-export default starredSlice
+export default starredSlice.reducer

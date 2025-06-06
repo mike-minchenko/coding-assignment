@@ -1,11 +1,19 @@
 import { useDispatch, useSelector } from "react-redux"
-import starredSlice from "store/starredSlice.ts"
-import watchLaterSlice from "store/watchLaterSlice.ts"
-import placeholder from "assets/not-found-500X750.jpeg"
+import { API_KEY, ENDPOINT } from "../../shared/constants"
+import { useAppSelector } from "../../store/hooks"
+import { starredSlice } from "../../store/reducers/starredSlice"
 
-const Movie = ({ movie, viewTrailer, closeCard }) => {
-  const state = useSelector(state => state)
-  const { starred, watchLater } = state
+import { trailerSlice } from "../../store/reducers/trailerSlice"
+
+import placeholder from "assets/not-found-500X750.jpeg"
+import { watchLaterSlice } from "../../store/reducers/watchLaterSlice"
+
+const Movie = ({ movie, closeCard }) => {
+  const starredMovies = useAppSelector(state => state.starred.starredMovies)
+  const watchLaterMovies = useAppSelector(
+    state => state.watchLater.watchLaterMovies,
+  )
+  const { openTrailerModal } = trailerSlice.actions
   const { starMovie, unstarMovie } = starredSlice.actions
   const { addToWatchLater, removeFromWatchLater } = watchLaterSlice.actions
 
@@ -16,6 +24,20 @@ const Movie = ({ movie, viewTrailer, closeCard }) => {
     e.cancelBubble = true
     if (e.stopPropagation) e.stopPropagation()
     e.target.parentElement.parentElement.classList.remove("opened")
+  }
+
+  const viewMovie = async (movie: any) => {
+    const URL = `${ENDPOINT}/movie/${movie.id}/videos?api_key=${API_KEY}`
+    const response = await fetch(URL)
+    const data = await response.json()
+
+    if (data.results.length) {
+      const trailer = data.results.find(vid => vid.type === "Trailer")
+      const trailerKey = trailer ? trailer.key : data.results[0].key
+      dispatch(openTrailerModal(trailerKey))
+    } else {
+      dispatch(openTrailerModal(null))
+    }
   }
 
   return (
@@ -29,9 +51,7 @@ const Movie = ({ movie, viewTrailer, closeCard }) => {
           <div className="info_panel">
             <div className="overview">{movie.overview}</div>
             <div className="year">{movie.release_date?.substring(0, 4)}</div>
-            {!starred.starredMovies
-              .map(movie => movie.id)
-              .includes(movie.id) ? (
+            {!starredMovies.map(movie => movie.id).includes(movie.id) ? (
               <span
                 className="btn-star"
                 data-testid="starred-link"
@@ -58,9 +78,7 @@ const Movie = ({ movie, viewTrailer, closeCard }) => {
                 <i className="bi bi-star-fill" data-testid="star-fill" />
               </span>
             )}
-            {!watchLater.watchLaterMovies
-              .map(movie => movie.id)
-              .includes(movie.id) ? (
+            {!watchLaterMovies.map(movie => movie.id).includes(movie.id) ? (
               <button
                 type="button"
                 data-testid="watch-later"
@@ -92,7 +110,7 @@ const Movie = ({ movie, viewTrailer, closeCard }) => {
             <button
               type="button"
               className="btn btn-dark"
-              onClick={() => viewTrailer(movie)}
+              onClick={() => viewMovie(movie)}
             >
               View Trailer
             </button>

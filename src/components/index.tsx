@@ -1,4 +1,6 @@
+import TrailerModal from "./TrailerModal/TrailerModal"
 import Header from "./Header/Header"
-import YouTubePlayer from "./YoutubePlayer/YoutubePlayer"
+import Portal from "./Portal/Portal"
+import Modal from "./Modal/Modal"
 
-export { Header, YouTubePlayer }
+export { Header, Portal, Modal, TrailerModal }

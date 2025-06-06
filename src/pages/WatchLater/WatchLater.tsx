@@ -1,6 +1,6 @@
 import { Link } from "react-router"
 import { useSelector, useDispatch } from "react-redux"
-import watchLaterSlice from "store/watchLaterSlice"
+import watchLaterSlice from "../../store/reducers/watchLaterSlice"
 
 import Movie from "../Movies/Movie"
 import "../Starred/starred.scss"
