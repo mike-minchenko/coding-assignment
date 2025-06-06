@@ -1,50 +1,49 @@
 import { Link, NavLink } from "react-router"
-import { useSelector } from "react-redux"
 
 import "./Header.scss"
+import { APP_ROUTES } from "../../routes"
+import StarredNavIcon from "./StarredNavIcon/StarredNavIcon"
 
 const Header = ({ searchMovies }) => {
-  const { starredMovies } = useSelector(state => state.starred)
-
   return (
-    <header>
-      <Link to="/" data-testid="home" onClick={() => searchMovies("")}>
-        <i className="bi bi-film" />
+    <header className="header">
+      <Link
+        to={APP_ROUTES.MOVIES}
+        data-testid="home"
+        onClick={() => searchMovies("")}
+        aria-lael="Go to the home page"
+        className="header__home-link"
+      >
+        <i className="bi bi-film" aria-hidden="true" />
       </Link>
 
-      <nav>
+      <div className="rounded header__search-input">
+        <input
+          type="search"
+          data-testid="search-movies"
+          onKeyUp={e => searchMovies(e.target.value)}
+          className="form-control rounded"
+          placeholder="Search movies..."
+          aria-label="Search movies input"
+        />
+      </div>
+
+      <nav className="header__nav-block">
         <NavLink
-          to="/starred"
+          to={APP_ROUTES.STARRED}
           data-testid="nav-starred"
-          className="nav-starred"
+          className="header__starred-link"
+          aria-label="Starred movies"
         >
-          {starredMovies.length > 0 ? (
-            <>
-              <i className="bi bi-star-fill bi-star-fill-white" />
-              <sup className="star-number">{starredMovies.length}</sup>
-            </>
-          ) : (
-            <i className="bi bi-star" />
-          )}
+          <StarredNavIcon />
         </NavLink>
-        <NavLink to="/watch-later" className="nav-fav">
-          watch later
+        <NavLink
+          to={APP_ROUTES.WATCH_LATER}
+          className="header__wtach-later-link"
+        >
+          Watch later
         </NavLink>
       </nav>
-
-      <div className="input-group rounded">
-        <Link to="/" onClick={e => searchMovies("")} className="search-link">
-          <input
-            type="search"
-            data-testid="search-movies"
-            onKeyUp={e => searchMovies(e.target.value)}
-            className="form-control rounded"
-            placeholder="Search movies..."
-            aria-label="Search movies"
-            aria-describedby="search-addon"
-          />
-        </Link>
-      </div>
     </header>
   )
 }

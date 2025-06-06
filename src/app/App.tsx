@@ -42,11 +42,11 @@ const App = () => {
 
   return (
     <div className="App">
-      {/*<Header*/}
-      {/*  searchMovies={searchMovies}*/}
-      {/*  searchParams={searchParams}*/}
-      {/*  setSearchParams={setSearchParams}*/}
-      {/*/>*/}
+      <Header
+        searchMovies={searchMovies}
+        searchParams={searchParams}
+        setSearchParams={setSearchParams}
+      />
       <RouterView />
       <TrailerModal />
     </div>
