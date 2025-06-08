@@ -1,6 +1,7 @@
 import { Link } from "react-router"
 import type { IMovie } from "models/movie"
 import "./FavouritesWrapper.scss"
+import { useElementHeight } from "../../hooks/useElementHeight"
 import MoviesList from "../MoviesList/MoviesList"
 
 const FavouritesWrapper = <T extends IMovie>({
@@ -10,6 +11,8 @@ const FavouritesWrapper = <T extends IMovie>({
   emptyListText,
   onRemoveAll,
 }: FavouritesWrapperProps<T>) => {
+  const height = useElementHeight({ selector: "header.header" })
+
   if (!data.length) {
     return (
       <section className="favourites" data-testid="favourites">
@@ -35,22 +38,25 @@ const FavouritesWrapper = <T extends IMovie>({
       data-testid="favourites"
       aria-labelledby="favourites-title"
     >
-      <div className="header">
+      <div className="header" style={{ top: height }}>
         <div className="view-container">
-          <h1 id="favourites-title">{title}</h1>
+          <div className="favourites__header-inner">
+            <h1 className="favourites__header-title" id="favourites-title">
+              {title}
+            </h1>
+            <button
+              className="btn btn-primary"
+              onClick={onRemoveAll}
+              aria-label={`Remove all movies from ${title}`}
+            >
+              {removeButtonText}
+            </button>
+          </div>
         </div>
       </div>
       <div className="view-container">
         <div data-testid="watch-later-movies">
           <MoviesList data={data} />
-
-          <button
-            className="btn btn-primary"
-            onClick={onRemoveAll}
-            aria-label={`Remove all movies from ${title}`}
-          >
-            {removeButtonText}
-          </button>
         </div>
       </div>
     </section>
