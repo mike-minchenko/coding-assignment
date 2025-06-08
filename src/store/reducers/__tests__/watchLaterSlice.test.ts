@@ -1,34 +1,51 @@
-import watchLaterSlice from "../watchLaterSlice.ts"
-import { moviesMock } from "./mocks/movies.mocks.ts"
+import { describe, it, expect } from "vitest"
+import { watchLaterSlice } from "../watchLaterSlice"
+import { MOVIES_MOCK } from "./mocks/movies.mocks"
 
-describe("watchLaterSlice test", () => {
-  const state = { watchLaterMovies: [] }
+const DEFAULT_STATE = watchLaterSlice.getInitialState()
 
-  it("should set initial state", () => {
-    const initialState = state
-    const action = { type: "" }
-    const result = watchLaterSlice.reducer(initialState, action)
-    expect(result).toEqual({ watchLaterMovies: [] })
+describe("watchLaterSlice reducer tests", () => {
+  it("should return initial state on unknown action", () => {
+    const action = { type: "unknown" }
+    const result = watchLaterSlice.reducer(undefined, action)
+    expect(result).toEqual(DEFAULT_STATE)
   })
 
   it("should add movie to watch later", () => {
-    const initialState = { ...state, watchLaterMovies: [] }
-    const action = watchLaterSlice.actions.addToWatchLater(moviesMock[0])
-    const result = watchLaterSlice.reducer(initialState, action)
-    expect(result.watchLaterMovies[0]).toBe(moviesMock[0])
+    const action = watchLaterSlice.actions.addToWatchLater(
+      MOVIES_MOCK.results[0],
+    )
+    const result = watchLaterSlice.reducer(DEFAULT_STATE, action)
+    expect(result.watchLaterMovies).toContainEqual(MOVIES_MOCK.results[0])
+    expect(result.watchLaterMovies).toHaveLength(1)
   })
 
   it("should remove movie from watch later", () => {
-    const initialState = { ...state, watchLaterMovies: moviesMock }
-    const action = watchLaterSlice.actions.removeFromWatchLater(moviesMock[0])
+    const initialState = { watchLaterMovies: MOVIES_MOCK.results }
+    const action = watchLaterSlice.actions.removeFromWatchLater(
+      MOVIES_MOCK.results[0],
+    )
     const result = watchLaterSlice.reducer(initialState, action)
-    expect(result.watchLaterMovies[0]).toBe(moviesMock[1])
+    expect(result.watchLaterMovies).not.toContainEqual(MOVIES_MOCK.results[0])
+    expect(result.watchLaterMovies).toContainEqual(MOVIES_MOCK.results[1])
+    expect(result.watchLaterMovies).toHaveLength(1)
   })
 
   it("should remove all movies", () => {
-    const initialState = { ...state, watchLaterMovies: moviesMock }
-    const action = watchLaterSlice.actions.remveAllWatchLater(state)
+    const initialState = { watchLaterMovies: MOVIES_MOCK.results }
+    const action = watchLaterSlice.actions.removeAllWatchLater()
     const result = watchLaterSlice.reducer(initialState, action)
-    expect(Object.keys(result.watchLaterMovies).length).toEqual(0)
+    expect(result.watchLaterMovies).toEqual([])
+    expect(result.watchLaterMovies).toHaveLength(0)
+  })
+
+  it("should not remove a movie if it's not in the list", () => {
+    const initialState = { watchLaterMovies: [MOVIES_MOCK.results[0]] }
+    const action = watchLaterSlice.actions.removeFromWatchLater(
+      MOVIES_MOCK.results[1],
+    )
+    const result = watchLaterSlice.reducer(initialState, action)
+    expect(result.watchLaterMovies).toEqual([MOVIES_MOCK.results[0]])
+    expect(result.watchLaterMovies).toHaveLength(1)
   })
 })

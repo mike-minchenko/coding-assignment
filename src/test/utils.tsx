@@ -1,31 +1,22 @@
+import type { PropsWithChildren, ReactNode } from "react"
 import { Provider } from "react-redux"
 import { BrowserRouter } from "react-router"
 import { render } from "@testing-library/react"
-import { configureStore } from "@reduxjs/toolkit"
 import { setupListeners } from "@reduxjs/toolkit/query"
 
-import moviesSlice from "../store/reducers/moviesSlice.ts"
-import starredSlice from "../store/reducers/starredSlice"
-import watchLaterSlice from "../store/reducers/watchLaterSlice"
+import { setupStore } from "../store/store"
 
 export function renderWithProviders(
-  ui,
+  ui: ReactNode,
   {
     preloadedState = {},
-    store = configureStore({
-      reducer: {
-        movies: moviesSlice.reducer,
-        starred: starredSlice.reducer,
-        watchLater: watchLaterSlice.reducer,
-      },
-      preloadedState,
-    }),
+    store = setupStore(preloadedState),
     ...renderOptions
   } = {},
 ) {
   setupListeners(store.dispatch)
 
-  function Wrapper({ children }) {
+  function Wrapper({ children }: PropsWithChildren) {
     return (
       <Provider store={store}>
         <BrowserRouter>{children}</BrowserRouter>

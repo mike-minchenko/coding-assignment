@@ -1,17 +1,37 @@
-export const moviesMock = [
-  {
-    id: "27205",
-    overview:
-      "Cobb, a skilled thief who commits corporate espionage by infiltrating...",
-    poster_path: "/8IB2e4r4oVhHnANbnm7O3Tj6tF8.jpg",
-    release_date: "2010-07-15",
-    title: "Inception",
-  },
-  {
-    id: "157336",
-    overview: "The adventures of a group of explorers who make use of...",
-    poster_path: "/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
-    release_date: "2014-11-05",
-    title: "Interstellar",
-  },
-]
+export const MOVIES_MOCK = {
+  results: [
+    {
+      id: 27205,
+      title: "Inception",
+      overview:
+        "Cobb, a skilled thief who commits corporate espionage by infiltrating...",
+      poster_path: "/8IB2e4r4oVhHnANbnm7O3Tj6tF8.jpg",
+      release_date: "2010-07-15",
+      adult: false,
+      backdrop_path: "/s3TBrRGB1iav7gFOCNx3H31MoES.jpg",
+      genre_ids: [28, 878, 12],
+      original_language: "en",
+      original_title: "Inception",
+      popularity: 150.123,
+      video: false,
+      vote_average: 8.3,
+      vote_count: 30000,
+    },
+    {
+      id: 157336,
+      title: "Interstellar",
+      overview: "The adventures of a group of explorers who make use of...",
+      poster_path: "/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
+      release_date: "2014-11-05",
+      adult: false,
+      backdrop_path: "/xu9zaAevzQ5nnrsXN6JcahLnG4i.jpg",
+      genre_ids: [12, 18, 878],
+      original_language: "en",
+      original_title: "Interstellar",
+      popularity: 160.456,
+      video: false,
+      vote_average: 8.6,
+      vote_count: 35000,
+    },
+  ],
+}
