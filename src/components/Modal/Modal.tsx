@@ -1,22 +1,28 @@
-import ModalOverlay from "./components/ModalOverlay/ModalOverlay"
+import ModalOverlay from "../ModalOverlay/ModalOverlay"
 import type { PropsWithChildren } from "react"
-import "./Modal.scss"
-import type { ModalProps } from "./types"
+import type { ModalOverlayProps } from "../ModalOverlay/types"
+import classes from "./Modal.module.scss"
 
 const Modal = ({
   children,
   isOpened,
   onClose,
+  overlayClassName = "",
+  className = "",
 }: PropsWithChildren<ModalProps>) => {
   return (
-    <ModalOverlay isOpened={isOpened} onClose={onClose}>
-      <div className="simple-modal">
+    <ModalOverlay
+      isOpened={isOpened}
+      onClose={onClose}
+      overlayClassName={overlayClassName}
+    >
+      <div className={`${classes["modal"]} ${className}`}>
         <button
-          className="modal-close"
+          className={classes["modal-close"]}
           onClick={onClose}
           aria-label="Close modal"
         >
-          <i className="bi bi-x-circle" aria-hidden={true} />
+          <i className="bi bi-x" aria-hidden="true" />
         </button>
         {children}
       </div>
@@ -25,3 +31,7 @@ const Modal = ({
 }
 
 export default Modal
+
+interface ModalProps extends ModalOverlayProps {
+  className?: string
+}

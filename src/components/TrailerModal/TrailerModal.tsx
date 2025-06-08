@@ -3,6 +3,7 @@ import { trailerSlice } from "../../store/reducers/trailerSlice"
 import Modal from "../Modal/Modal"
 import NoTrailerMessage from "./components/NoTrailerMessage/NoTrailerMessage"
 import YoutubePlayer from "./components/YoutubePlayer/YoutubePlayer"
+import "./TrailerModal.scss"
 
 const TrailerModal = () => {
   const isOpened = useAppSelector(state => state.trailer.isOpened)
@@ -23,7 +24,12 @@ const TrailerModal = () => {
   }
 
   return (
-    <Modal isOpened={isOpened} onClose={closeModal}>
+    <Modal
+      isOpened={isOpened}
+      onClose={closeModal}
+      className="trailer-modal"
+      overlayClassName="trailer-modal__overlay"
+    >
       <YoutubePlayer videoKey={videoKey} />
     </Modal>
   )

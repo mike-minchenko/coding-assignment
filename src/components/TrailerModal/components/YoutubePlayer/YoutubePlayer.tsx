@@ -1,13 +1,15 @@
 import ReactPlayer from "react-player"
 import { YOUTUBE_URL } from "./constants"
+import "./YoutubePlayer.scss"
 
 const YoutubePlayer = ({ videoKey }: YoutubePlayerProps) => (
   <ReactPlayer
     data-testid="youtube-player"
-    className="youtube-palyer"
+    className="youtube-player__player"
     url={`${YOUTUBE_URL}${videoKey}`}
-    controls={true}
-    playing={true}
+    aria-label="YouTube video player"
+    width="100%"
+    height="100%"
   />
 )
 

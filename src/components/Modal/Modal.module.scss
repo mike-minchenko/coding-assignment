@@ -1,20 +1,24 @@
-.simple-modal {
+.modal {
+  --modal-padding: 15px;
+
   position: relative;
-  min-width: 350px;
+  min-width: calc(320px - var(--modal-padding) * 2);
   max-height: 700px;
-  padding: 15px;
+  padding: var(--modal-padding);
   border-radius: 16px;
   background-color: #ffffff;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
 }
 .modal-close {
   position: absolute;
-  top: -5px;
-  right: -5px;
-  padding: 0;
+  top: -12px;
+  right: -12px;
+  padding: 4px;
   border-radius: 50%;
-  border: unset;
+  border: 1px solid #000;
   line-height: 1;
+  background: #fff;
+
 
   &>i:hover {
     color: #606060;

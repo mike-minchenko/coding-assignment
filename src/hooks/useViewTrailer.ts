@@ -21,7 +21,7 @@ export const useViewTrailer = (): UseViewTrailerReturn => {
   const { openTrailerModal } = trailerSlice.actions
 
   const viewTrailer = useCallback(
-    async (id: string) => {
+    async (id: number) => {
       const videos = await getVideos(id)
 
       if (videos.results.length) {
@@ -41,8 +41,8 @@ export const useViewTrailer = (): UseViewTrailerReturn => {
 interface UseViewTrailerReturn {
   /**
    * Fetches trailer video and triggers modal open.
-   * @param {string} id - The movie ID for which to fetch trailer videos.
+   * @param {number} id - The movie ID for which to fetch trailer videos.
    * @returns {Promise<void>}
    */
-  viewTrailer: (id: string) => Promise<void>
+  viewTrailer: (id: number) => Promise<void>
 }
