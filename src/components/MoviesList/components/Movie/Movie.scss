@@ -1,0 +1,177 @@
+.movie {
+  --title-line-height: 1.2em;
+  --title-wrapper-padding: 8px;
+
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  max-height: 350px;
+
+  @media (min-width: 720px) {
+    &:hover {
+      transform: scale(1.05);
+
+      & .movie__overlay {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+
+  &__poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-color: #C0C0C0;
+  }
+
+  &__title-wrapper {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 8px;
+    background: rgba(0, 0, 0, 0.6);
+    text-align: center;
+    height: calc(
+      var(--title-line-height) * 2 + var(--title-wrapper-padding) * 2
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__title {
+    line-height: 1.2;
+    font-weight: bold;
+    font-size: 0.9rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__overlay {
+    text-align: center;
+    position: absolute;
+    background: rgba(20, 20, 20, 0.8);
+    inset: 0;
+    opacity: 0;
+    visibility: hidden;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: opacity 0.3s ease;
+    cursor: default;
+  }
+
+  &__overlay-title {
+    font-size: 1.1rem;
+  }
+
+  &__description {
+    flex: 1;
+    padding: 5px;
+    margin-bottom: 5px;
+    overflow: auto;
+    font-size: 0.7rem;
+    line-height: 1.1;
+  }
+
+  &__year {
+    font-size: 0.7rem;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    button {
+      font-size: unset;
+      &.movie__btn-star {
+        padding: 0;
+        border: none;
+        background: none;
+        font-size: 17px;
+        color: #e50914;
+        cursor: pointer;
+        align-self: center;
+        @media (max-width: 520px) {
+          font-size: 25px;
+        }
+      }
+      &.movie__btn-watch-later {
+        &.blue {
+          color: #fff;
+          background-color: #1cb5e0;
+          border: #1cb5e0;
+        }
+        &:hover {
+          color: #fff;
+          background: #1cb5e0;
+          border-color: #1cb5e0;
+        }
+      }
+      &.movie__btn-view-trailer {
+        &:hover {
+          color: #fff;
+          background: #1cb5e0;
+          border-color: #1cb5e0;
+        }
+      }
+      &.movie__btn-watch-later,
+      &.movie__btn-view-trailer {
+        font-size: 0.6rem;
+        width: 100%;
+      }
+    }
+  }
+
+  &__modal-close {
+    display: none;
+  }
+
+  &.in-modal {
+    width: 100%;
+    height: 100%;
+    max-height: unset;
+
+    &:hover {
+      transform: unset;
+    }
+
+    & .movie__overlay {
+      opacity: 1;
+      visibility: visible;
+      padding-top: 30px;
+    }
+
+    & .movie__modal-close {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: transparent;
+      border: none;
+      font-size: 30px;
+      color: #fff;
+      line-height: normal;
+      padding: 0;
+    }
+  }
+
+  &__preview-overlay {
+    .modal-overlay__content {
+      width: 100%;
+      height: 100%;
+    }
+    .modal-overlay__dimming {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+  }
+}

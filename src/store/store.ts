@@ -1,4 +1,8 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit"
+import {
+  combineReducers,
+  configureStore,
+  type ConfigureStoreOptions,
+} from "@reduxjs/toolkit"
 import moviesReducer from "./reducers/moviesSlice"
 import starredReducer from "./reducers/starredSlice"
 import trailerReducer from "./reducers/trailerSlice"
@@ -11,9 +15,12 @@ const rootReducer = combineReducers({
   trailer: trailerReducer,
 })
 
-export const setupStore = () => {
+export const setupStore = (
+  preloadedState: ConfigureStoreOptions["preloadedState"] = {},
+) => {
   return configureStore({
     reducer: rootReducer,
+    preloadedState,
   })
 }
 

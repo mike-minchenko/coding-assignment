@@ -1,4 +1,4 @@
-import { useAppSelector } from "../../../store/hooks"
+import { useAppSelector } from "store/hooks"
 import "./StarredNavIcon.scss"
 
 const StarredNavIcon = () => {
@@ -9,15 +9,12 @@ const StarredNavIcon = () => {
   }
 
   return (
-    <div className="starred-nav-icon">
+    <div
+      className="starred-nav-icon"
+      aria-label={`${starredMovies.length} starred movies`}
+    >
       <i className="bi bi-star-fill bi-star-fill-white" aria-hidden="true" />
-      <sup
-        className="starred-nav-icon__count"
-        aria-label={`${starredMovies.length} movies`}
-        aria-describedby=""
-      >
-        {starredMovies.length}
-      </sup>
+      <sup className="starred-nav-icon__count">{starredMovies.length}</sup>
     </div>
   )
 }

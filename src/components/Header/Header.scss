@@ -1,17 +1,18 @@
 .header {
-  position: fixed;
+  position: sticky;
+  top: 0;
   z-index: 1;
   width: 100%;
   min-height: 50px;
-  color: #fff;
   background: rgba(0, 8, 81, 0.8);
   border: 1px solid transparent;
-  border-radius: 0;
-  padding: 0.7rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap:10px;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap:10px;
+  }
 
   &__home-link i {
     font-size: 1.3rem;
