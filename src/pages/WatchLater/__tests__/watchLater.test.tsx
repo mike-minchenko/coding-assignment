@@ -1,26 +1,49 @@
-import { screen, waitFor } from "@testing-library/react"
+import { screen, waitFor, within } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import { renderWithProviders } from "test/utils"
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
+import { MOCK_SEARCH_RESPONSE } from "test/mocks"
 import App from "app/App"
 
-it("Watch Later movies page", async () => {
-  renderWithProviders(<App />)
+describe("Watch Later test", () => {
+  beforeEach(async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(() =>
+        Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(MOCK_SEARCH_RESPONSE),
+        }),
+      ),
+    )
 
-  await userEvent.type(screen.getByTestId("search-movies"), "forrest gump")
-  await waitFor(() => {
-    expect(
-      screen.getAllByText("Through the Eyes of Forrest Gump")[0],
-    ).toBeInTheDocument()
-  })
-  const watchLaterLink = screen.getAllByTestId("watch-later")[0]
-  await waitFor(() => {
-    expect(watchLaterLink).toBeInTheDocument()
-  })
-  await userEvent.click(watchLaterLink)
+    renderWithProviders(<App />)
 
-  // const watchLaterink = screen.getByTestId('watch-later-div')
-  // await waitFor(() => {
-  //     expect(watchLaterink).toBeInTheDocument()
-  // })
-  // await userEvent.click(watchLaterink)
+    await userEvent.type(screen.getByTestId("search-movies-input"), "avatar")
+    const findMovie = await screen.findByTestId(
+      "movie: Avatar: The Way of Water",
+    )
+    expect(findMovie).toBeInTheDocument()
+
+    const watchLaterLink = await within(findMovie).findByTestId("watch-later")
+    await userEvent.click(watchLaterLink)
+  })
+
+  afterEach(() => {
+    vi.restoreAllMocks()
+  })
+
+  it("Watch later functionality", async () => {
+    const user = userEvent.setup()
+    await user.click(screen.getByTestId("nav-watch-later"))
+
+    await waitFor(() => {
+      expect(screen.getByTestId("favourites")).toBeInTheDocument()
+    })
+
+    await waitFor(() => {
+      const movies = screen.getAllByTestId(/^movie:/)
+      expect(movies).toHaveLength(1)
+    })
+  })
 })

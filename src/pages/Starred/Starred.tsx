@@ -1,48 +1,24 @@
-import { Link } from "react-router"
-import { useDispatch } from "react-redux"
-import { useAppSelector } from "../../store/hooks"
+import { FavouritesWrapper } from "../../components"
+import { useAppDispatch, useAppSelector } from "../../store/hooks"
 import { starredSlice } from "../../store/reducers/starredSlice"
-
-import Movie from "../Movies/Movie"
-import "./Starred.scss"
 
 const Starred = () => {
   const starredMovies = useAppSelector(state => state.starred.starredMovies)
   const { clearAllStarred } = starredSlice.actions
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
+
+  const onRemoveAllStarredMovies = () => {
+    dispatch(clearAllStarred())
+  }
 
   return (
-    <div className="starred" data-testid="starred">
-      {starredMovies.length > 0 && (
-        <div data-testid="starred-movies" className="starred-movies">
-          <h6 className="header">Starred movies</h6>
-          <div className="row">
-            {starredMovies.map(movie => (
-              <Movie movie={movie} key={movie.id} />
-            ))}
-          </div>
-
-          <footer className="text-center">
-            <button
-              className="btn btn-primary"
-              onClick={() => dispatch(clearAllStarred())}
-            >
-              Remove all starred
-            </button>
-          </footer>
-        </div>
-      )}
-
-      {starredMovies.length === 0 && (
-        <div className="text-center empty-cart">
-          <i className="bi bi-star" />
-          <p>There are no starred movies.</p>
-          <p>
-            Go to <Link to="/">Home</Link>
-          </p>
-        </div>
-      )}
-    </div>
+    <FavouritesWrapper
+      data={starredMovies}
+      title="Starred movies"
+      removeButtonText="Remove all starred"
+      emptyListText="There are no starred movies."
+      onRemoveAll={onRemoveAllStarredMovies}
+    />
   )
 }
 
