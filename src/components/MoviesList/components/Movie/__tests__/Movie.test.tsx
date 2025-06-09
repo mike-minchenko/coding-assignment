@@ -1,21 +1,16 @@
 import { screen, waitFor, within } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
-import { renderWithProviders } from "test/utils"
+import { mockFetch, renderWithProviders } from "test/utils"
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
-import { MOCK_SEARCH_RESPONSE } from "test/mocks"
+import { MOCK_SEARCH_RESPONSE, MOCK_VIDEOS_RESPONSE } from "test/mocks"
 import App from "app/App"
 
 describe("Movie starring and watch later", () => {
   beforeEach(async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn(() =>
-        Promise.resolve({
-          ok: true,
-          json: () => Promise.resolve(MOCK_SEARCH_RESPONSE),
-        }),
-      ),
-    )
+    mockFetch({
+      "/search/movie": MOCK_SEARCH_RESPONSE,
+      "\\/movie\\/\\d+\\/videos": MOCK_VIDEOS_RESPONSE,
+    })
 
     renderWithProviders(<App />)
 
@@ -33,12 +28,13 @@ describe("Movie starring and watch later", () => {
     )
     expect(findMovie).toBeInTheDocument()
 
-    const starMovieLink = await within(findMovie).findByTestId("starred-link")
+    const starMovieLink =
+      await within(findMovie).findByTestId("starr-movie-btn")
     await user.click(starMovieLink)
 
     await waitFor(() => {
       expect(screen.getByTestId("star-fill")).toBeInTheDocument()
-      expect(screen.getByTestId("unstar-link")).toBeInTheDocument()
+      expect(screen.getByTestId("unstar-movie-btn")).toBeInTheDocument()
     })
   })
 
@@ -49,11 +45,15 @@ describe("Movie starring and watch later", () => {
     )
     expect(findMovie).toBeInTheDocument()
 
-    const watchLaterLink = await within(findMovie).findByTestId("watch-later")
+    const watchLaterLink = await within(findMovie).findByTestId(
+      "add-to-watch-later-btn",
+    )
     await user.click(watchLaterLink)
 
     await waitFor(() => {
-      expect(screen.getByTestId("remove-watch-later")).toBeInTheDocument()
+      expect(
+        screen.getByTestId("remove-from-watch-later-btn"),
+      ).toBeInTheDocument()
     })
   })
 })

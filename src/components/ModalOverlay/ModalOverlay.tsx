@@ -25,6 +25,7 @@ const ModalOverlay = ({
     <Portal>
       <div className={`modal-overlay ${overlayClassName}`}>
         <div
+          data-testid="modal-overlay-dimming"
           className="modal-overlay__dimming"
           role="button"
           tabIndex={0}

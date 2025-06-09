@@ -63,7 +63,7 @@ const MovieBodyComponent = ({
           {!isInStarred ? (
             <button
               className="movie__btn-star"
-              data-testid="starred-link"
+              data-testid="starr-movie-btn"
               aria-label="Add to starred movies"
               onClick={() => dispatch(starMovie(movie))}
             >
@@ -72,7 +72,7 @@ const MovieBodyComponent = ({
           ) : (
             <button
               className="movie__btn-star"
-              data-testid="unstar-link"
+              data-testid="unstar-movie-btn"
               aria-label="Remove from starred movies"
               onClick={() => dispatch(unstarMovie(movie))}
             >
@@ -86,7 +86,7 @@ const MovieBodyComponent = ({
           {!isInWatchLater ? (
             <button
               type="button"
-              data-testid="watch-later"
+              data-testid="add-to-watch-later-btn"
               className="btn btn-light movie__btn-watch-later"
               aria-label="Add to watch later"
               onClick={() => dispatch(addToWatchLater(movie))}
@@ -96,7 +96,7 @@ const MovieBodyComponent = ({
           ) : (
             <button
               type="button"
-              data-testid="remove-watch-later"
+              data-testid="remove-from-watch-later-btn"
               className="btn btn-light movie__btn-watch-later blue"
               onClick={() => dispatch(removeFromWatchLater(movie))}
               aria-label="Remove from watch later"

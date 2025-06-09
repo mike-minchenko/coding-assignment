@@ -1,25 +1,20 @@
 import { screen, waitFor, within } from "@testing-library/react"
-import { describe, it, expect, beforeEach, vi } from "vitest"
+import { describe, it, expect, beforeEach } from "vitest"
 import userEvent from "@testing-library/user-event"
-import { MOCK_SEARCH_RESPONSE } from "../../test/mocks"
-import { renderWithProviders } from "../../test/utils.tsx"
+import { MOCK_SEARCH_RESPONSE, MOCK_VIDEOS_RESPONSE } from "test/mocks"
+import { mockFetch, renderWithProviders } from "test/utils.tsx"
 import App from "../App.tsx"
 
-describe("App render tests", () => {
+describe("App render test", () => {
   beforeEach(() => {
     renderWithProviders(<App />)
   })
 
   it("search for movies", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn(() =>
-        Promise.resolve({
-          ok: true,
-          json: () => Promise.resolve(MOCK_SEARCH_RESPONSE),
-        }),
-      ),
-    )
+    mockFetch({
+      "/search/movie": MOCK_SEARCH_RESPONSE,
+      "\\/movie\\/\\d+\\/videos": MOCK_VIDEOS_RESPONSE,
+    })
 
     const user = userEvent.setup()
     await user.type(screen.getByTestId("search-movies-input"), "avatar")

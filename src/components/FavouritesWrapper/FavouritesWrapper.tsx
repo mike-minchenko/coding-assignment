@@ -19,7 +19,7 @@ const FavouritesWrapper = <T extends IMovie>({
         <div className="view-container">
           <div className="text-center empty-cart">
             <i className="bi bi-heart" aria-hidden="true" />
-            <p>{emptyListText}</p>
+            <p data-testid="favourites-empty-text">{emptyListText}</p>
             <p>
               Go to{" "}
               <Link to="/" aria-label="Go home">
@@ -45,6 +45,7 @@ const FavouritesWrapper = <T extends IMovie>({
               {title}
             </h1>
             <button
+              data-testid="remove-from-favourites-btn"
               className="favourites__remove-button"
               onClick={onRemoveAll}
               aria-label={`Remove all movies from ${title}`}
