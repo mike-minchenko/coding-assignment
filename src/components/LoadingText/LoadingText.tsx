@@ -1,7 +1,7 @@
 import "./LoadingText.scss"
 
 const LoadingText = ({
-  text = "Loading more...",
+  text = "Loading ...",
   className = "",
 }: LoadingTextProps) => {
   return (

@@ -16,17 +16,15 @@ const FavouritesWrapper = <T extends IMovie>({
   if (!data.length) {
     return (
       <section className="favourites" data-testid="favourites">
-        <div className="view-container">
-          <div className="text-center empty-cart">
-            <i className="bi bi-heart" aria-hidden="true" />
-            <p data-testid="favourites-empty-text">{emptyListText}</p>
-            <p>
-              Go to{" "}
-              <Link to="/" aria-label="Go home">
-                Home
-              </Link>
-            </p>
-          </div>
+        <div className="view-container text-center">
+          <i className="bi bi-heart" aria-hidden="true" />
+          <p data-testid="favourites-empty-text">{emptyListText}</p>
+          <p>
+            Go to{" "}
+            <Link to="/" aria-label="Go home">
+              Home
+            </Link>
+          </p>
         </div>
       </section>
     )
