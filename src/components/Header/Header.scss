@@ -1,4 +1,4 @@
-@use '@styles/helpers' as *;
+@use "@styles/helpers" as *;
 
 .header {
   position: sticky;
@@ -9,27 +9,34 @@
   border: rem(1) solid transparent;
 
   &__inner {
-    @include  flex-center;
-
-    gap:rem(10);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: rem(10);
   }
 
-  &__home-link i {
-    font-size: rem(21);
-    color: var(--color-white);
+  &__home-link {
+    i {
+      font-size: rem(21);
+      color: var(--color-white);
+    }
+
+    @include mobile-large {
+      @include visually-hidden;
+    }
   }
 
   &__search-input {
     width: rem(200);
     margin-left: auto;
 
-    input {
-      height: rem(25);
-      font-size: rem(14);
+    @include mobile-large {
+      margin-left: unset;
     }
 
-    @include mobile-large {
-      width: rem(150);
+    input {
+      height: rem(35);
+      font-size: rem(15);
     }
   }
 
@@ -40,7 +47,7 @@
   }
 
   &__starred-link {
-    font-size: rem(19);
+    font-size: rem(25);
   }
 
   &__wtach-later-link {
@@ -54,9 +61,6 @@
 
     @include hover {
       color: var(--color-grey);
-    }
-    &:hover {
-
     }
   }
 }

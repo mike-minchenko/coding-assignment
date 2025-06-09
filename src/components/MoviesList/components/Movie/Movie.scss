@@ -76,7 +76,7 @@
   }
 
   &__overlay-title {
-    @include fluid-text(18, 16);
+    @include fluid-text(20, 18);
   }
 
   &__description {
@@ -102,8 +102,7 @@
     button {
       font-size: unset;
       &.movie__btn-star {
-        @include fluid-text(25, 20);
-
+        font-size: rem(25);
         padding: 0;
         border: none;
         background: none;
@@ -168,6 +167,13 @@
       color: var(--color-white);
       line-height: 1;
       padding: 0;
+    }
+
+    & .movie__description,
+    & .movie__year,
+    & .movie__btn-watch-later,
+    & .movie__btn-view-trailer {
+      font-size: rem(16);
     }
   }
 

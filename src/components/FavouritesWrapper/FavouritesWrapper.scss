@@ -8,6 +8,10 @@
     justify-content: space-between;
   }
 
+  &__header-title {
+    @include fluid-text(32, 24)
+  }
+
   &__remove-button {
     background-color: var(--color-button-background);
     color: var(--color-white);
