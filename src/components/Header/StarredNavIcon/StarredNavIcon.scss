@@ -1,25 +1,27 @@
+@use '@styles/helpers' as *;
+
 .starred-nav-icon {
   position: relative;
 
   &__count {
     position: absolute;
-    right: -7px;
-    top: 0;
-    padding: 0.5rem 0.3rem;
-    font-size: 0.65rem;
+    right: - rem(10);
+    padding: rem(4) rem(8);
+    font-size: rem(12);
     font-weight: 600;
-    color: #fff;
-    background:  #e50914;
+    color: var(--color-white);
+    background: var(--color-red);
     border-radius: 50%;
     animation: blink 1s infinite;
+    line-height: 1;
   }
 }
 
 @keyframes blink {
   0%, 100% {
-    background: #e50914;
+    background:var(--color-red);
   }
   50% {
-    background: #ff4d4d;
+    background: var(--color-red-light);
   }
 }

@@ -1,20 +1,21 @@
-.modal-overlay {
-    position: fixed;
-    inset: 0;
-    padding: 36px;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+@use "@styles/helpers" as *;
 
-    @media(max-width: 780px) {
-      padding: 16px;
-    }
+.modal-overlay {
+  @include flex-center;
+
+  position: fixed;
+  inset: 0;
+  padding: rem(36);
+  z-index: 1;
+
+  @include tablet {
+    padding: rem(16);
+  }
 
   &__dimming {
     position: absolute;
     inset: 0;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(var(--color-black-rgb), 0.6);
     z-index: -1;
   }
 }

@@ -1,0 +1,9 @@
+@use "../../node_modules/bootstrap/scss/bootstrap";
+@use 'normalize';
+@use 'variables';
+@use 'utils';
+@use 'globals';
+
+$bootstrap-icons-font-dir: "bootstrap-icons/font/fonts";
+
+@import "../../node_modules/bootstrap-icons/font/bootstrap-icons";

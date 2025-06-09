@@ -1,59 +1,62 @@
+@use '@styles/helpers' as *;
+
 .header {
   position: sticky;
   top: 0;
   z-index: 1;
   width: 100%;
-  min-height: 50px;
-  background: rgba(0, 8, 81, 0.8);
-  border: 1px solid transparent;
+  background: rgba(var(--color-main-rgb), 0.8);
+  border: rem(1) solid transparent;
 
   &__inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap:10px;
+    @include  flex-center;
+
+    gap:rem(10);
   }
 
   &__home-link i {
-    font-size: 1.3rem;
-    color: #e9ecef;
+    font-size: rem(21);
+    color: var(--color-white);
   }
 
   &__search-input {
-    width: 200px;
+    width: rem(200);
     margin-left: auto;
 
     input {
-      height: 25px;
-      font-size: 0.8rem;
+      height: rem(25);
+      font-size: rem(14);
     }
 
-    @media (max-width: 375px) {
-      width: 150px;
+    @include mobile-medium {
+      width: rem(150);
     }
   }
 
   &__nav-block {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: rem(10);
   }
 
   &__starred-link {
-    font-size: 1.2rem;
+    font-size: rem(19);
   }
 
   &__wtach-later-link {
-    font-size: 0.8rem;
+    font-size: rem(16);
   }
 
   &__starred-link,
   &__wtach-later-link {
-    color: #fff;
+    color: var(--color-white);
     text-decoration: none;
 
+    @include hover {
+      color: var(--color-grey);
+    }
     &:hover {
-      color: #ccc;
+
     }
   }
 }

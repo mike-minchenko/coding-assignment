@@ -1,7 +1,9 @@
+@use '@styles/helpers' as *;
+
 .favourites {
   &__header-inner {
     display: flex;
-    gap: 10px;
+    gap: rem(10);
     align-items: center;
     justify-content: space-between;
   }

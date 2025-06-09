@@ -1,9 +1,10 @@
+@use "@styles/helpers" as *;
+
 .no-trailer-message {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100px;
-  color:#000;
+  @include flex-center;
+
+  min-height: rem(100);
+  color: var(--color-black);
 
   &__text {
     margin: 0;

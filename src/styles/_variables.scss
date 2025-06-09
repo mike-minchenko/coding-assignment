@@ -1,0 +1,26 @@
+@use 'helpers' as *;
+
+:root {
+  --color-white: #fff;
+  --color-grey: #ccc;
+
+  --color-black: #000;
+  --color-black-rgb: 0, 0, 0;
+
+  --color-red: #e50914;
+  --color-red-light: #ff4d4d;
+
+  --color-blue: #1cb5e0;
+
+  --color-main: #000851;
+  --color-main-rgb: 0, 8, 81;
+
+  --container-width: #{rem(1600)};
+  --container-padding-x: #{rem(16)};
+
+  --transition-duration: 0.2s;
+
+  @include laptop {
+    --container-width: #{rem(1280)};
+  }
+}

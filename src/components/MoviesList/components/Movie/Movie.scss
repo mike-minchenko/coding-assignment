@@ -1,16 +1,23 @@
+@use "@styles/helpers" as *;
+
+.full-size {
+  width: 100%;
+  height: 100%;
+}
+
 .movie {
   --title-line-height: 1.2em;
-  --title-wrapper-padding: 8px;
+  --title-wrapper-padding: #{rem(8)};
 
   position: relative;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: rem(9);
   cursor: pointer;
-  transition: transform 0.3s ease;
-  max-height: 350px;
+  transition: transform var(--transition-duration) ease;
+  max-height: rem(350);
 
-  @media (min-width: 720px) {
-    &:hover {
+  @include tablet-small-above {
+    @include hover {
       transform: scale(1.05);
 
       & .movie__overlay {
@@ -24,28 +31,28 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    background-color: #C0C0C0;
+    background-color: #c0c0c0;
   }
 
   &__title-wrapper {
+    @include flex-center;
+
     position: absolute;
     bottom: 0;
     width: 100%;
-    padding: 8px;
-    background: rgba(0, 0, 0, 0.6);
+    padding: var(--title-wrapper-padding);
+    background: rgba(var(--color-black-rgb), 0.6);
     text-align: center;
     height: calc(
       var(--title-line-height) * 2 + var(--title-wrapper-padding) * 2
     );
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 
   &__title {
-    line-height: 1.2;
+    @include fluid-text(16, 14);
+
+    line-height: var(--title-line-height);
     font-weight: bold;
-    font-size: 0.9rem;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -54,80 +61,79 @@
   }
 
   &__overlay {
+    @include hide;
+
     text-align: center;
     position: absolute;
     background: rgba(20, 20, 20, 0.8);
     inset: 0;
-    opacity: 0;
-    visibility: hidden;
-    padding: 12px;
+    padding: rem(12);
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    transition: opacity 0.3s ease;
+    gap: rem(10);
+    transition: opacity var(--transition-duration) ease;
     cursor: default;
   }
 
   &__overlay-title {
-    font-size: 1.1rem;
+    @include fluid-text(18, 16);
   }
 
   &__description {
     flex: 1;
-    padding: 5px;
-    margin-bottom: 5px;
+    padding: rem(5);
+    margin-bottom: rem(5);
     overflow: auto;
-    font-size: 0.7rem;
+    font-size: rem(14);
     line-height: 1.1;
   }
 
   &__year {
-    font-size: 0.7rem;
+    font-size: rem(14);
   }
 
   &__buttons {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+
+    gap: rem(10);
 
     button {
       font-size: unset;
       &.movie__btn-star {
+        @include fluid-text(25, 20);
+
         padding: 0;
         border: none;
         background: none;
-        font-size: 17px;
-        color: #e50914;
+        color: var(--color-red);
         cursor: pointer;
         align-self: center;
-        @media (max-width: 520px) {
-          font-size: 25px;
-        }
       }
+
       &.movie__btn-watch-later {
         &.blue {
-          color: #fff;
-          background-color: #1cb5e0;
-          border: #1cb5e0;
-        }
-        &:hover {
-          color: #fff;
-          background: #1cb5e0;
-          border-color: #1cb5e0;
+          color: var(--color-white);
+          background: var(--color-blue);
+          border-color: var(--color-blue);
         }
       }
-      &.movie__btn-view-trailer {
-        &:hover {
-          color: #fff;
-          background: #1cb5e0;
-          border-color: #1cb5e0;
-        }
-      }
+
       &.movie__btn-watch-later,
       &.movie__btn-view-trailer {
-        font-size: 0.6rem;
+        @include hover {
+          color: var(--color-white);
+          background: var(--color-blue);
+          border-color: var(--color-blue);
+        }
+
+        font-size: rem(14);
         width: 100%;
+
+        & > i {
+          font-size: rem(16);
+        }
       }
     }
   }
@@ -137,18 +143,18 @@
   }
 
   &.in-modal {
-    width: 100%;
-    height: 100%;
-    max-height: unset;
-
-    &:hover {
+    @include hover {
       transform: unset;
     }
 
+    @extend .full-size;
+
+    max-height: unset;
+
     & .movie__overlay {
-      opacity: 1;
-      visibility: visible;
-      padding-top: 30px;
+      @include show;
+
+      padding-top: rem(30);
     }
 
     & .movie__modal-close {
@@ -158,20 +164,19 @@
       right: 0;
       background: transparent;
       border: none;
-      font-size: 30px;
-      color: #fff;
-      line-height: normal;
+      font-size: rem(30);
+      color: var(--color-white);
+      line-height: 1;
       padding: 0;
     }
   }
 
   &__preview-overlay {
     .modal-overlay__content {
-      width: 100%;
-      height: 100%;
+      @extend .full-size;
     }
     .modal-overlay__dimming {
-      background-color: rgba(0, 0, 0, 0.2);
+      background-color: rgba(var(--color-black-rgb), 0.2);
     }
   }
 }
