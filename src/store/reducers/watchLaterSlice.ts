@@ -1,6 +1,5 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit"
-
-import type { IMovie } from "../../models/movie"
+import type { IMovie } from "models/movie"
 import { createAppSelector } from "../utils"
 
 interface WatchLaterState {

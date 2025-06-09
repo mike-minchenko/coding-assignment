@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import type { IMovie } from "../../models/movie"
-import { getMovies } from "../../services/moviesService"
+import type { IMovie } from "models/movie"
+import { getMovies } from "services/moviesService"
 
 export const fetchMovies = createAsyncThunk("fetch-movies", getMovies)
 

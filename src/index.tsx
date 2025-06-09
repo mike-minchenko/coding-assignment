@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router"
 import { StrictMode } from "react"
 import { setupStore } from "store/store"
 import App from "./app/App"
+
 import "./styles/index.scss"
 
 const store = setupStore()

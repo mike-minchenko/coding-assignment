@@ -1,6 +1,6 @@
-import { FavouritesWrapper } from "../../components"
-import { useAppDispatch, useAppSelector } from "../../store/hooks"
-import { watchLaterSlice } from "../../store/reducers/watchLaterSlice"
+import { FavouritesWrapper } from "components"
+import { useAppDispatch, useAppSelector } from "store/hooks"
+import { watchLaterSlice } from "store/reducers/watchLaterSlice"
 
 const WatchLater = () => {
   const watchLaterMovies = useAppSelector(

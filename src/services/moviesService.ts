@@ -1,8 +1,7 @@
-import type { IMovie } from "../models/movie"
-import type { SearchResponseWrapper } from "../models/responseWrappers"
-
-import type { SearchFilter } from "../models/searchFilter"
-import { API_KEY, ENDPOINT } from "../shared/constants"
+import type { IMovie } from "models/movie"
+import type { SearchResponseWrapper } from "models/responseWrappers"
+import type { SearchFilter } from "models/searchFilter"
+import { API_KEY, ENDPOINT } from "shared/constants"
 
 export const getMovies = async ({
   queryString = "",

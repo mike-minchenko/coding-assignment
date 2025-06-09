@@ -1,5 +1,5 @@
-import ModalOverlay from "../ModalOverlay/ModalOverlay"
 import type { PropsWithChildren } from "react"
+import ModalOverlay from "../ModalOverlay/ModalOverlay"
 import type { ModalOverlayProps } from "../ModalOverlay/types"
 import classes from "./Modal.module.scss"
 

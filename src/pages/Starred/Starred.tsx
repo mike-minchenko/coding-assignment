@@ -1,6 +1,6 @@
-import { FavouritesWrapper } from "../../components"
-import { useAppDispatch, useAppSelector } from "../../store/hooks"
-import { starredSlice } from "../../store/reducers/starredSlice"
+import { FavouritesWrapper } from "components"
+import { useAppDispatch, useAppSelector } from "store/hooks"
+import { starredSlice } from "store/reducers/starredSlice"
 
 const Starred = () => {
   const starredMovies = useAppSelector(state => state.starred.starredMovies)

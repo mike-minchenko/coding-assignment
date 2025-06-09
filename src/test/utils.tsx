@@ -4,8 +4,7 @@ import { BrowserRouter } from "react-router"
 import { render } from "@testing-library/react"
 import { setupListeners } from "@reduxjs/toolkit/query"
 import { vi } from "vitest"
-
-import { setupStore } from "../store/store"
+import { setupStore } from "store/store"
 
 export function renderWithProviders(
   ui: ReactNode,

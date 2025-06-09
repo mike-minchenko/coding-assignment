@@ -1,5 +1,5 @@
 import { TrailerModal } from "components"
-import { RouterView } from "../routes"
+import { RouterView } from "routes"
 
 const App = () => {
   return (

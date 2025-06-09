@@ -1,7 +1,6 @@
 import { mockFetch, renderWithProviders } from "test/utils"
 import { screen, within } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
-
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 import { MOCK_SEARCH_RESPONSE, MOCK_VIDEOS_RESPONSE } from "test/mocks"
 import App from "app/App"

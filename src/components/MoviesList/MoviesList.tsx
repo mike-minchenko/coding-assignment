@@ -1,4 +1,4 @@
-import type { IMovie } from "../../models/movie"
+import type { IMovie } from "models/movie"
 import Movie from "./components/Movie/Movie"
 import "./MoviesList.scss"
 

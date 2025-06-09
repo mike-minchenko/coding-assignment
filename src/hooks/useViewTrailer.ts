@@ -1,7 +1,7 @@
 import { useCallback } from "react"
-import { getVideos } from "../services/trailerService"
-import { useAppDispatch } from "../store/hooks"
-import { trailerSlice } from "../store/reducers/trailerSlice"
+import { getVideos } from "services/trailerService"
+import { useAppDispatch } from "store/hooks"
+import { trailerSlice } from "store/reducers/trailerSlice"
 
 /**
  * Custom hook to fetch and display a trailer modal for a movie by its ID.

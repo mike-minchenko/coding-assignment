@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 import ModalOverlay from "../../../ModalOverlay/ModalOverlay"
-import type { IMovie } from "../../../../models/movie"
+import type { IMovie } from "models/movie"
 import MovieBodyComponent from "./MovieBodyComponent"
 import "./Movie.scss"
 

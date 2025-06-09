@@ -1,16 +1,13 @@
 import { memo } from "react"
-import placeholder from "../../../../assets/not-found-500X750.jpeg"
-import { useViewTrailer } from "../../../../hooks/useViewTrailer"
-import type { IMovie } from "../../../../models/movie"
-import { useAppDispatch, useAppSelector } from "../../../../store/hooks"
-import {
-  selectStarredIds,
-  starredSlice,
-} from "../../../../store/reducers/starredSlice"
+import placeholder from "assets/not-found-500X750.jpeg"
+import { useViewTrailer } from "hooks/useViewTrailer"
+import type { IMovie } from "models/movie"
+import { useAppDispatch, useAppSelector } from "store/hooks"
+import { selectStarredIds, starredSlice } from "store/reducers/starredSlice"
 import {
   selectWatchLaterIds,
   watchLaterSlice,
-} from "../../../../store/reducers/watchLaterSlice"
+} from "store/reducers/watchLaterSlice"
 
 const MovieBodyComponent = ({
   movie,

@@ -1,5 +1,5 @@
-import type { TrailersResponseWrapper } from "../models/responseWrappers"
-import type { Video } from "../models/video"
+import type { TrailersResponseWrapper } from "models/responseWrappers"
+import type { Video } from "models/video"
 
 import { API_KEY, ENDPOINT } from "../shared/constants"
 

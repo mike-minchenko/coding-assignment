@@ -1,6 +1,6 @@
 import { useCallback } from "react"
 import { useSearchParams } from "react-router"
-import type { SearchFilter } from "../models/searchFilter"
+import type { SearchFilter } from "models/searchFilter"
 
 /**
  * Custom hook to manage movie search filters using URL parameters.

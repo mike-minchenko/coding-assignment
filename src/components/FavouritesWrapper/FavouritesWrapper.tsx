@@ -1,6 +1,6 @@
 import { Link } from "react-router"
 import type { IMovie } from "models/movie"
-import { useElementHeight } from "../../hooks/useElementHeight"
+import { useElementHeight } from "hooks/useElementHeight"
 import MoviesList from "../MoviesList/MoviesList"
 import "./FavouritesWrapper.scss"
 

@@ -1,6 +1,5 @@
 import { Link, NavLink, useLocation } from "react-router"
-
-import { APP_ROUTES } from "../../routes"
+import { APP_ROUTES } from "routes"
 import SearchInput from "./SearchInput/SearchInput"
 import StarredNavIcon from "./StarredNavIcon/StarredNavIcon"
 import "./Header.scss"

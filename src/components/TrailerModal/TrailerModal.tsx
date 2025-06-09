@@ -1,5 +1,5 @@
-import { useAppDispatch, useAppSelector } from "../../store/hooks"
-import { trailerSlice } from "../../store/reducers/trailerSlice"
+import { useAppDispatch, useAppSelector } from "store/hooks"
+import { trailerSlice } from "store/reducers/trailerSlice"
 import Modal from "../Modal/Modal"
 import NoTrailerMessage from "./components/NoTrailerMessage/NoTrailerMessage"
 import YoutubePlayer from "./components/YoutubePlayer/YoutubePlayer"
