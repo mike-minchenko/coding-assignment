@@ -3,7 +3,7 @@
 $laptop: 1440.98;
 $tablet:767.98;
 $tablet-small: 719.98;
-$mobile-medium: 374.98;
+$mobile-large: 424.98;
 
 
 @mixin laptop {
@@ -25,8 +25,8 @@ $mobile-medium: 374.98;
   }
 }
 
-@mixin mobile-medium {
-  @media (width <= rem($mobile-medium)) {
+@mixin mobile-large {
+  @media (width <= rem($mobile-large)) {
     @content;
   }
 }

@@ -1,8 +1,8 @@
 import { Link } from "react-router"
 import type { IMovie } from "models/movie"
-import "./FavouritesWrapper.scss"
 import { useElementHeight } from "../../hooks/useElementHeight"
 import MoviesList from "../MoviesList/MoviesList"
+import "./FavouritesWrapper.scss"
 
 const FavouritesWrapper = <T extends IMovie>({
   data,
@@ -45,7 +45,7 @@ const FavouritesWrapper = <T extends IMovie>({
               {title}
             </h1>
             <button
-              className="btn btn-primary"
+              className="favourites__remove-button"
               onClick={onRemoveAll}
               aria-label={`Remove all movies from ${title}`}
             >

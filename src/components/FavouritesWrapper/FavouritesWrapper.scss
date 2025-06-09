@@ -8,4 +8,19 @@
     justify-content: space-between;
   }
 
+  &__remove-button {
+    background-color: var(--color-button-background);
+    color: var(--color-white);
+    padding: rem(8) rem(16);
+    border: none;
+    border-radius: rem(6);
+    font-size: rem(14);
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color var(--transition-duration) ease;
+
+    &:hover {
+      background-color: var(--color-button-background-hover);
+    }
+  }
 }
